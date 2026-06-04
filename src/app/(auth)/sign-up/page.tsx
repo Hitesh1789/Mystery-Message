@@ -69,7 +69,7 @@ const Page = () => {
       toast("Success", {
         description: response.data.message
       })
-      router.replace(`/verify/${username}`)
+      router.replace(`/verify/${data.username}`)
       setIsSubmitting(false)
     }
     catch (error) {
@@ -85,7 +85,7 @@ const Page = () => {
 
   return (
     <div className='flex flex-col justify-center items-center min-h-screen bg-gray-100'>
-      <div className='w-full max-w-md p-4 space-y-8 bg-whhite rounded-lg shawdow-md'>
+      <div className='w-full max-w-md p-4 space-y-8 bg-white rounded-lg shadow-md'>
         <div className='text-center'>
           <h1 className='text-4xl font-extrabold tracking-tight lg:text-5xl mb-6'>
             Join Mystry Message
