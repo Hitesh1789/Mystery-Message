@@ -21,20 +21,20 @@ export async function POST(request: Request) {
 
     const userId = user._id;
     const { acceptMessageStatus } = await request.json();
+    
 
-
-    if(!acceptMessageStatus){
+    if(acceptMessageStatus === undefined || acceptMessageStatus === null){
         return NextResponse.json({
                 success: false,
                 message: 'AcceptMessageStatus is required!'
             },
-                { status: 401 }
+                { status: 400 }
             )
     }
 
     try {
         const user = await UserModel.findByIdAndUpdate(
-            { userId },
+            { _id : userId },
             {
                 isAcceptingMessage: acceptMessageStatus
             },
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
         return NextResponse.json({
             success: true,
             message:'Accept Message status updated successfully.',
-            user
+            isAcceptingMessages: user.isAcceptingMessage
         },
             { status: 200 }
         )
@@ -87,9 +87,7 @@ export async function GET(){
     const userId = user._id;
 
     try {
-        const user = await UserModel.findById(
-            { userId }
-        )
+        const user = await UserModel.findById(userId)
 
         if (!user) {
             return NextResponse.json({

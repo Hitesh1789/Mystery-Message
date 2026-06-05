@@ -21,15 +21,21 @@ export async function GET() {
     }
 
     const userId = new mongoose.Types.ObjectId(user._id);
+
     try {
-        const user = await UserModel.aggregate([
-            { $match: { id: userId } },
-            { $unwind: '$messages' },
+        const userMessageData = await UserModel.aggregate([
+            { $match: { _id: userId } },
+            {
+                $unwind: {
+                    path: '$messages',
+                    preserveNullAndEmptyArrays: true // Prevents dropping users with 0 messages
+                }
+            },
             { $sort: { 'messages.createdAt': -1 } },
             { $group: { _id: '$_id', messages: { $push: '$messages' } } }
         ])
 
-        if (!user || user.length == 0) {
+        if (!userMessageData || userMessageData.length == 0) {
             return NextResponse.json({
                 success: false,
                 message: 'User not found!'
@@ -40,9 +46,9 @@ export async function GET() {
 
         return NextResponse.json({
             success: true,
-            messages: user[0].messages
+            messages: userMessageData[0].messages
         },
-            { status: 401 }
+            { status: 200 }
         )
 
     } catch (error) {
