@@ -151,7 +151,7 @@ function Dashboard() {
         </span>
       </div>
 
-      <Separator />
+      <Separator className="mb-2"/>
 
       <Button onClick={()=>fetchMessages(true)}>
         {
