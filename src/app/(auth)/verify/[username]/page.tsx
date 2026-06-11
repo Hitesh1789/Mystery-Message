@@ -49,7 +49,7 @@ function VerifyAccount() {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center min-h-screen bg-gray-100'>
+        <div className='flex flex-col justify-center items-center min-h-screen '>
             <div className='w-full max-w-md p-4 space-y-8 bg-whhite rounded-lg shawdow-md'>
                 <div className='text-center'>
                     Code Verification - Verify Your Code

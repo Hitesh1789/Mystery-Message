@@ -129,7 +129,7 @@ const Page = () => {
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen bg-linear-to-br py-8 px-4">
       <div className="mx-auto max-w-2xl space-y-6">
 
         <Card className="shadow-xl border-0">
