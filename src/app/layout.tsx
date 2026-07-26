@@ -23,11 +23,16 @@ export default function RootLayout({
           <AuthProvider>
             <Navabar />
             {children}
-            <Toaster toastOptions={{
-              classNames: {
-                description: '!text-red-900',
-              },
-            }} />
+            <Toaster
+              toastOptions={{
+                classNames: {
+                  title:
+                    "font-semibold text-zinc-900 dark:text-zinc-100",
+                  description:
+                    "text-zinc-600 dark:text-zinc-400",
+                },
+              }}
+            />
           </AuthProvider>
         </ThemeProvider>
       </body>
