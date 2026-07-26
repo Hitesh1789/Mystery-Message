@@ -10,7 +10,10 @@ export const authOptions: NextAuthOptions = {
             id: "credentials",
             name: "Credentials",
             credentials: {
-                email: { label: "Email", type: "text" },
+                identifier: {
+                    label: "Email or Username",
+                    type: "text",
+                },
                 password: { label: "Password", type: "password" }
             },
 
@@ -31,7 +34,7 @@ export const authOptions: NextAuthOptions = {
                     if (!user.isVerified) {
                         throw new Error('Please verify your account before login.')
                     }
-                    const isPasswordCorrect = await bcrypt.compare(credentials.password,user.password)
+                    const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password)
 
                     if (!isPasswordCorrect) {
                         throw new Error('Invalid password.')
@@ -40,7 +43,11 @@ export const authOptions: NextAuthOptions = {
                     return user
                 }
                 catch (err) {
-                    throw new Error(err)
+                    if (err instanceof Error) {
+                        throw err;
+                    }
+
+                    throw new Error("Something went wrong during authentication.");
                 }
             },
         })
