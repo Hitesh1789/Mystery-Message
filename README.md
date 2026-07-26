@@ -1,43 +1,62 @@
 # Mystery Message
-Mystery Message is a full-stack anonymous messaging platform built with Next.js, TypeScript, NextAuth, MongoDB, and Tailwind CSS. Users can securely create accounts, verify their email addresses, share unique public profile links, receive anonymous messages, and generate AI-powered message suggestions for a more engaging user experience.
 
-## Features
+Mystery Message is a full-stack anonymous messaging platform built with **Next.js, TypeScript, NextAuth, MongoDB, and Tailwind CSS**. Users can securely create accounts, verify their email addresses, share unique public profile links, receive anonymous messages, and generate AI-powered message suggestions for a more engaging experience.
 
-* Secure Authentication with NextAuth
-* Email Verification
-* Anonymous Messaging
-* Unique Public Profile Links
-* User Dashboard
-* Accept/Disable Incoming Messages
-* Real-time Username Availability Check
-* Responsive UI
-* Message Deletion
-* AI Message Suggestions
+> **Demo Notice**
+>
+> The email OTP verification system is fully implemented. However, OTP delivery is temporarily unavailable in the deployed demo while the production email domain is being configured. To explore the application, please use the demo credentials below.
 
-## Tech Stack
+### Demo Credentials
 
-**Frontend**
+```text
+Email: demo@gmail.com
+Password: Demo@123
+```
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* shadcn/ui
+---
 
-**Backend**
+## ✨ Features
 
-* Next.js API Routes
-* NextAuth
-* MongoDB Atlas
-* Mongoose
+- 🔐 Secure Authentication with NextAuth
+- 📧 Email Verification (OTP)
+- 💬 Anonymous Messaging
+- 🔗 Unique Public Profile Links
+- 🤖 AI-Powered Message Suggestions
+- 📋 User Dashboard
+- ✅ Accept / Disable Incoming Messages
+- 👤 Real-time Username Availability Check
+- 🗑️ Message Deletion
+- 🌙 Dark & Light Mode Support
+- 📱 Fully Responsive UI
 
-**Libraries**
+---
 
-* React Hook Form
-* Zod
-* Axios
+## 🛠️ Tech Stack
 
-## Project Structure
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+
+### Backend
+
+- Next.js API Routes
+- NextAuth
+- MongoDB Atlas
+- Mongoose
+
+### Libraries
+
+- React Hook Form
+- Zod
+- Axios
+
+---
+
+## 📂 Project Structure
 
 ```text
 src/
@@ -59,25 +78,53 @@ src/
 └── proxy.ts
 ```
 
-## Installation
+---
+
+## 🚀 Installation
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/Hitesh1789/Mystery-Message.git
+```
+
+Move into the project directory:
+
+```bash
 cd Mystery-Message
+```
+
+Install dependencies:
+
+```bash
 npm install
-npm run dev
 ```
 
 Create a `.env` file and add the required environment variables.
 
-## Future Improvements
+Start the development server:
 
-* Dark Mode
-* User Analytics
-* Spam Protection
+```bash
+npm run dev
+```
 
-## Author
+Open **http://localhost:3000** in your browser.
 
-Hitesh
+---
 
-GitHub: https://github.com/Hitesh1789
+## 🎯 Future Improvements
+
+- User Analytics Dashboard
+- Spam Detection & Protection
+- Message Search & Filtering
+- User Profile Customization
+- Email Notifications
+- Social Sharing Enhancements
+
+---
+
+## 👨‍💻 Author
+
+**Hitesh**
+
+GitHub: **https://github.com/Hitesh1789**
