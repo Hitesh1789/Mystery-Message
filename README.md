@@ -17,7 +17,6 @@ Password: Demo@123
 
 ## ✨ Features
 
-<<<<<<< HEAD
 - Secure Authentication with NextAuth
 - Email Verification (OTP)
 - Anonymous Messaging
@@ -92,8 +91,14 @@ git clone https://github.com/Hitesh1789/Mystery-Message.git
 Move into the project directory:
 
 ```bash
+```
+
+Move into the project directory:
+
+```bash
 cd Mystery-Message
 ```
+
 
 Install dependencies:
 
