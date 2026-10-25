@@ -1,6 +1,4 @@
-const response = await fetch("http://localhost:3000/api/suggest-messages", {
-  method: "POST",
-});
+const response = await fetch("http://localhost:3000/api/suggest-messages");
 
 const reader = response.body.getReader();
 const decoder = new TextDecoder();

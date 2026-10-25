@@ -17,7 +17,6 @@ import {
   Loader2,
   Send,
   Sparkles,
-  MessageSquareText
 } from "lucide-react"
 import { useParams } from "next/navigation"
 import { useState } from "react"
@@ -78,32 +77,33 @@ const Page = () => {
     setIsLoading(true)
 
     try {
-      const response = await fetch(
-        "/api/suggest-messages",
-        {
-          method: "POST"
-        }
-      )
+      const response = await fetch('/api/suggest-messages')
 
-      const reader =
-        response.body?.getReader()
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
 
-      if (!reader) return
+      if (!response.body) {
+        throw new Error("No response body");
+      }
 
+      const reader = response.body.getReader();
       const decoder = new TextDecoder()
 
       while (true) {
-        const { done, value } =
-          await reader.read()
+        const { value, done } = await reader.read()
 
-        if (done) break
+        if (done) {
+          reader.releaseLock();
+          break
+        }
 
-        const chunk =
-          decoder.decode(value)
+        const chunk = decoder.decode(value, {
+          stream: true,
+        });
 
-        setCompletion(
-          prev => prev + chunk
-        )
+
+        setCompletion(prev => prev + chunk)
       }
     } catch (err) {
       console.error(err)
@@ -111,6 +111,7 @@ const Page = () => {
       toast.error(
         "Failed to generate suggestions"
       )
+      
     } finally {
       setIsLoading(false)
     }
@@ -176,11 +177,10 @@ const Page = () => {
                         )}
 
                         <span
-                          className={`text-xs ${
-                            messageLength > 280
-                              ? "text-orange-500"
-                              : "text-muted-foreground"
-                          }`}
+                          className={`text-xs ${messageLength > 280
+                            ? "text-orange-500"
+                            : "text-muted-foreground"
+                            }`}
                         >
                           {messageLength}/320
                         </span>
@@ -216,7 +216,7 @@ const Page = () => {
           </CardContent>
         </Card>
 
-      
+
         <Card className="shadow-lg border-0">
 
           <CardContent className="space-y-4">
